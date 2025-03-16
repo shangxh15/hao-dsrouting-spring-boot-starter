@@ -4,8 +4,8 @@ import com.hao.dsrouting.datasource.DsroutingDataSource;
 import com.hao.dsrouting.domain.DataSourceProperties;
 import com.hao.dsrouting.factory.DataSourceFactory;
 import com.hao.dsrouting.factory.DruidDataSourceFactory;
-import com.hao.dsrouting.load.LoadDataSource;
-import com.hao.dsrouting.load.PropertiesLoadDataSource;
+import com.hao.dsrouting.load.LoadDataSourceProperties;
+import com.hao.dsrouting.load.PropertiesLoadDataSourceProperties;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -39,9 +39,9 @@ public class DsroutingAutoConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean(value = {LoadDataSource.class})
-    public LoadDataSource propertiesLoadDataSource() {
-        return new PropertiesLoadDataSource();
+    @ConditionalOnMissingBean(value = {LoadDataSourceProperties.class})
+    public LoadDataSourceProperties loadDataSourceProperties() {
+        return new PropertiesLoadDataSourceProperties();
     }
 
     @Bean

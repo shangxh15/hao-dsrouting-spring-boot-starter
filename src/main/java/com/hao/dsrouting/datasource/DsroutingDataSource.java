@@ -3,7 +3,7 @@ package com.hao.dsrouting.datasource;
 import com.hao.dsrouting.domain.DataSourceProperties;
 import com.hao.dsrouting.factory.DataSourceFactory;
 import com.hao.dsrouting.holder.DsroutingContextHolder;
-import com.hao.dsrouting.load.LoadDataSource;
+import com.hao.dsrouting.load.LoadDataSourceProperties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class DsroutingDataSource extends AbstractRoutingDataSource {
     private Map<Object, DataSource> dataSourceMap;
 
     @Resource
-    private LoadDataSource loadDataSource;
+    private LoadDataSourceProperties loadDataSourceProperties;
 
     @Autowired(required = false)
     private DataSourceProperties dataSourceProperties;
@@ -69,7 +69,7 @@ public class DsroutingDataSource extends AbstractRoutingDataSource {
         if (this.dataSourceMap.containsKey(lookupKey)) {
             dataSource = this.dataSourceMap.get(lookupKey);
         } else {
-            DataSourceProperties dataSourceProp = loadDataSource.load(lookupKey);
+            DataSourceProperties dataSourceProp = loadDataSourceProperties.load(lookupKey);
             if (null == dataSourceProp) {
                 throw new IllegalStateException("Cannot determine target DataSourceProperties for lookup key [" + lookupKey + "]");
             }

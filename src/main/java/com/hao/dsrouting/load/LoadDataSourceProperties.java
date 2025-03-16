@@ -8,7 +8,7 @@ import com.hao.dsrouting.domain.DataSourceProperties;
  * @author shangxuhao
  */
 @FunctionalInterface
-public interface LoadDataSource {
+public interface LoadDataSourceProperties {
 
     DataSourceProperties load(Object lookupKey);
 }

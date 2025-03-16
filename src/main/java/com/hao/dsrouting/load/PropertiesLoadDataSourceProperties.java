@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import java.util.Map;
 
 @ConfigurationProperties(prefix = "dsrouting")
-public class PropertiesLoadDataSource implements LoadDataSource {
+public class PropertiesLoadDataSourceProperties implements LoadDataSourceProperties {
 
     private Map<String, DataSourceProperties> dataSources;
 
